@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Book Search</title>
+    </head>
+    <body>
+        <p>You searched for: <strong>{{ query }}</strong></p>
+        {% if books %}
+        <p>Found {{ books|length }} book{{ books|pluralize }}.</p>  # 使用形式：{{value | pluralize}}，或者{{value | pluralize:"es"}}，或者{{value | pluralize:"y,ies"}}
+意义：如果value不是1，则返回一个复数后缀，缺省的后缀是's'
+        <ul>
+            {% for book in books %}
+                <li>{{ book.title }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No books matched your search criteria.</p>
+        {% endif %}
+    </body>
+</html>

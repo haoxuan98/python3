@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Publisher, Author, Book
+from .models import Publisher, Author, Book, User
 
 # Register your models here.
 
@@ -16,6 +16,10 @@ class BookAdmin(admin.ModelAdmin):
     filter_horizontal = ('authors',)
     raw_id_fields = ('publisher',)
 
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'password')
+
 admin.site.register(Publisher)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
+admin.site.register(User, UserAdmin)
